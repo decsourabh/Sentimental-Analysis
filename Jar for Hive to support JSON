@@ -1,0 +1,13 @@
+This jar let Hive to support JSON format. By default Hive does not support JSON data. 
+
+Download this jar to /tmp
+
+From Hive terminal:
+add jar /tmp/json-serde-1.3.8-jar-with-dependencies.jar
+
+Create table like
+
+Create a table to store data in a hive table 
+create external table load_tweets(id BIGINT,text STRING) ROW FORMAT SERDE 'com.cloudera.hive.serde.JSONSerDe' LOCATION '/user/flume/tweets'
+) ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
+LOCATION '/Sports';
