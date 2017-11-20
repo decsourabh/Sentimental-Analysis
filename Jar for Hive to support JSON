@@ -1,6 +1,6 @@
 This jar let Hive to support JSON format. By default Hive does not support JSON data. 
 
-Download this jar to /tmp
+Download https://github.com/decsourabh/TwitterAnalysis/blob/master/json-serde-1.3.8-jar-with-dependencies.jar to /tmp
 
 From Hive terminal:
 add jar /tmp/json-serde-1.3.8-jar-with-dependencies.jar
