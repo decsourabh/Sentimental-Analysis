@@ -32,19 +32,22 @@ Flume is called declarative (all the functionalities and configurations just nee
 
 Once you declare your configurations in Flume.conf, put it in $FLUME_HOME/conf/. There are two ways to stream data in our storage system:
 
-a)-/etc/default/flume-ng-agent fle contains environment variable as FLUME_AGENT_NAME, just name set this variable as your AgentName(TwitterAgent in out case).
+a)-/etc/default/flume-ng-agent file contains environment variable as FLUME_AGENT_NAME, just name set this variable as your AgentName(TwitterAgent in out case).
 
 - cd /etc/init.d
+
 sudo flume-ng-agent start  ->It will start flume-ng and data will be start streaming
 
 sudo flume-ng-agent stop   ->To stop straming
 
 b)cd FLUME_HOME/bin
+
 AGENTNAME is TwitterAgent in our case
 
 sudo flume-ng agent --conf ./conf/ --f ./conf/Flume.conf --name AGENTNAME -Dflume.root.logger=DEBUG,console 
 
 If you don't want to run in DEBUG mode, simply enter 
+
 sudo flume-ng agent --conf ./conf/ --f ./conf/Flume.conf --name AGENTNAME -Dflume.root.logger=INFO,console
 
 
