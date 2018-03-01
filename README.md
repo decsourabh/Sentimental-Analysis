@@ -26,3 +26,5 @@ Copy the consumer key and the consumer secret.
 Scroll down further and click on ‘create my access token’.
 Copy the Access Token and Access token Secret.
 Note down all four key at some place, will need this in Flume config file.
+
+
