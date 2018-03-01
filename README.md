@@ -36,15 +36,16 @@ a)-/etc/default/flume-ng-agent fle contains environment variable as FLUME_AGENT_
 
 - cd /etc/init.d
 sudo flume-ng-agent start  ->It will start flume-ng and data will be start streaming
+
 sudo flume-ng-agent stop   ->To stop straming
 
 b)cd FLUME_HOME/bin
 AGENTNAME is TwitterAgent in our case
+
 sudo flume-ng agent --conf ./conf/ --f ./conf/Flume.conf --name AGENTNAME -Dflume.root.logger=DEBUG,console 
 
 If you don't want to run in DEBUG mode, simply enter 
 sudo flume-ng agent --conf ./conf/ --f ./conf/Flume.conf --name AGENTNAME -Dflume.root.logger=INFO,console
 
 
-Location of Flume logs can be found in below file:
-$FLUME_HOME/conf/log4j.properties
+Location of Flume logs can be found in -> $FLUME_HOME/conf/log4j.properties
