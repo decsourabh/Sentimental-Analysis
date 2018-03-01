@@ -1,0 +1,30 @@
+For Sentimental Analysis, we need to have tweet_id and tweet texts. 
+
+We are analysing the Twitter data using Hive, so please enter hive shell
+
+we will extract tweet_id and tweet_text for our analysis
+->create external table twitter_data(id BIGINT,text String) ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' LOCATION '/Politics';
+
+To exract one line out of Text
+->create table twitter_lines as select id as id, split(text, ' ') as words from twitter_data; 
+
+To extract word out of line, if you don't know about LATERAL VIEW UTDF, please see here https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView .Lateral VIEW is also used in order to reduce the number of data rows in our database.
+
+create table twitter_word as 
+->SELECT id as id, word from twitter_lines LATERAL VIEW explode(words) w as word
+
+Load the Sentiments.txt in your local and create table for sentimenal analysis:
+->create table word_rating(word string, point int) ROW FORMAT DELIMITED FIELDS TERMINATED BY  '\t'
+
+Load Sentiments.txt in word_rating 
+->load data local inpath '/home/kumar/inputs/Sentiments.txt' into table word_rating;
+
+Please set below parameter before using join in Hive 
+->set hive.auto.convert.join=false
+
+Join word_rating and twitter_word, so that rating of word will be joined with the words which we have
+->create table word_join as select t.id,t.word,r.point from twitter_word t LEFT OUTER JOIN word_rating r ON(t.word=r.word)
+
+
+In the below command, we are grouping the word  by it's Id so that all the words tweeted by one Id will be grouped, making our task easier to find average point for each tweet can be found:
+select id,AVG(point) as point from word_join GROUP BY word_join.id order by rating DESC;
