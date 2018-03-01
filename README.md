@@ -52,3 +52,6 @@ sudo flume-ng agent --conf ./conf/ --f ./conf/Flume.conf --name AGENTNAME -Dflum
 
 
 Location of Flume logs can be found in -> $FLUME_HOME/conf/log4j.properties
+
+
+Please refer https://github.com/decsourabh/TwitterAnalysis/blob/master/Sentimental%20Analysis%20Using%20Hive to analyse streamed data using Hive
