@@ -1,6 +1,8 @@
 For Sentimental Analysis, we need to have tweet_id and tweet texts. 
 
-Before entering the hive shell, Please download https://github.com/decsourabh/TwitterAnalysis/blob/master/Jar%20for%20Hive%20to%20support%20JSON and put it into /tmp/
+Before entering the hive shell, Please download following and put it in /tmp/
+
+https://github.com/decsourabh/TwitterAnalysis/blob/master/Jar%20for%20Hive%20to%20support%20JSON
 
 We are analysing the Twitter data using Hive, so please enter hive shell
 
