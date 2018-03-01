@@ -1,9 +1,15 @@
 For Sentimental Analysis, we need to have tweet_id and tweet texts. 
 
+Before entering the hive shell, Please download https://github.com/decsourabh/TwitterAnalysis/blob/master/Jar%20for%20Hive%20to%20support%20JSON and put it into /tmp/
+
 We are analysing the Twitter data using Hive, so please enter hive shell
 
+hive> ADD JAR /tmp/json-serde-1.3.8-jar-with-dependencies.jar;
+
+Above command will enable Hive to support JSON
+
 we will extract tweet_id and tweet_text for our analysis
-->create external table twitter_data(id BIGINT,text String) ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' LOCATION '/Politics';
+->create external table twitter_data(id BIGINT,text String) ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe' LOCATION '/DirectoryWhereYouWantToStreamDataInHDFS/';
 
 To exract one line out of Text
 ->create table twitter_lines as select id as id, split(text, ' ') as words from twitter_data; 
