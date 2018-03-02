@@ -27,8 +27,8 @@ Load the Sentiments.txt in your local and create table for sentimenal analysis:
 Load Sentiments.txt in word_rating 
 ->load data local inpath '/home/kumar/inputs/Sentiments.txt' into table word_rating;
 
-Please set below parameter before using join in Hive 
-->set hive.auto.convert.join=false
+Please set below parameter before using join in Hive which does not let hive to map join automatically
+->set hive.auto.convert.join=false 
 
 Join word_rating and twitter_word, so that rating of word will be joined with the words which we have
 ->create table word_join as select t.id,t.word,r.point from twitter_word t LEFT OUTER JOIN word_rating r ON(t.word=r.word)
