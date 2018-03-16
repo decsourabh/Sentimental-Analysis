@@ -16,10 +16,8 @@ we will extract tweet_id and tweet_text for our analysis
 To exract one line out of Text
 ->create table twitter_lines as select id as id, split(text, ' ') as words from twitter_data; 
 
-To extract word out of line, if you don't know about LATERAL VIEW UTDF, please see here https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView .Lateral VIEW is also used in order to reduce the number of data rows in our database.
-
 create table twitter_word as 
-->SELECT id as id, word from twitter_lines LATERAL VIEW explode(words) w as word
+->SELECT id as id, word from twitter_lines explode(words) w as word
 
 Load the Sentiments.txt in your local and create table for sentimenal analysis:
 ->create table word_rating(word string, point int) ROW FORMAT DELIMITED FIELDS TERMINATED BY  '\t'
