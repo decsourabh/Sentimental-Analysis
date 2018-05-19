@@ -5,7 +5,7 @@ We are trying to Analyse Twitter Data which we are streaming using Apache Flume 
 We are using Twitter4j API of Flume to connect to streaming Data of Twitter
 
 
-Pre-requisites:
+**Pre-requisites:**
 
 1. All deamons are running.
 2. Java, Flume and Hive is installed and configured.
@@ -55,3 +55,19 @@ Location of Flume logs can be found in -> $FLUME_HOME/conf/log4j.properties
 
 
 Please refer https://github.com/decsourabh/TwitterAnalysis/blob/master/Sentimental%20Analysis%20Using%20Hive to analyse streamed data using Hive
+
+
+
+
+
+
+**Errors**
+1)Failed to start agent because dependencies were not found in classpath. Error follows.
+java.lang.NoClassDefFoundError: org/apache/hadoop/io/SequenceFile$CompressionType
+ --> Make sure you have following in flume-env.sh
+     HADOOP_HOME=path to hadoop
+     FLUME-CLASSPATH=/home/kumar/hadoop-2.8.1/hadoop-hdfs-2.8.1.jar
+
+2)Unhandled error
+java.lang.NoSuchMethodError: twitter4j.TwitterStream.addListener(Ltwitter4j/StatusListener;)V
+--> make sure you have compatible jars, for flume 1.7, 
